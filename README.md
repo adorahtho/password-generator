@@ -34,7 +34,7 @@ The following image shows how the already built password generator looks like.
 
 *Navigate to desired directory
 
-*Clone the repository:
+*Clone the repository from UW Coding Bootcamps Gitlab:
 git clone https://uwisconsin.bootcampcontent.com/uwisconsin_coding_bootcamp/UofW-VIRT-FSF-PT-02-2023-U-LOLC.git
 
 *Navigate to cloned repository
