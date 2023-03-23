@@ -1,8 +1,4 @@
-// Assignment Code
-//put all variables here
-//const locks in the value, can't change later
-//let can change value later
-
+//Variables of different character types used to generate a random password.
 var lowerCaseChar = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 var upperCaseChar = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 var numericChar = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -11,7 +7,7 @@ var specialCharEl = ['!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',',
 
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
+// The writePassword function will run the generatePassword function to find the value for the variable password. Once the value for generatePassword function is complete the random password will appear in the html textarea element with id="password". That text area will contain the password that displays on the webpage. 
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
@@ -19,15 +15,16 @@ function writePassword() {
   passwordText.value = password;
 }
 
+//This function will run the pop up windows asking the user their desired character length. If the answer is not between 8-128 characters, an alert will pop up for the user to enter again. Once the condition is met, additional windows will pop up asking if the user wants lowercase or uppercase letters, numbers, and/or special characters.
 function generatePasswordQs () {
 
-  var charLength = window.prompt("Please enter a digit between 8-128 to determine the desired length of the password.")
+  var charLength = window.prompt("Please enter a digit between 8-128 to determine the desired length of password.")
 
   if (charLength >= 8 && charLength <= 128) {
     console.log("character length: " + charLength)
     } else if (charLength < 8 || charLength > 128) { 
       window.alert("Invalid entry. The characters must be between 8-128.")
-      console.log("invalid entry")
+      console.log("invalid length")
       generatePasswordQs();
     }
 
@@ -62,20 +59,20 @@ function generatePasswordQs () {
   }else if (specialChar === false) {
     console.log("special character(s): " + specialChar)
   }
-
-  const passwordChoices = {
+//The object variable will collect all the user's choices.
+  const userChoices = {
     charNumber: +charLength, 
     lowerCaseLetter: lowerCase,
     upperCaseLetter: upperCase,
     numericValue: number,
     special: specialChar
   }
-  console.log("password choices set", passwordChoices) 
-
-  return passwordChoices //this "return" will save the function name "generate password choices" as the value of "passwordChoices" so when you call the function that will be the value.
-
+  console.log("user choices set", userChoices) 
+  //The collected results for userChoices will be returned back to the function and the next function will run.
+  return userChoices 
 } 
 
+//This function will randomize everything in the possibleCharacters array when called.
 function randomPassword(array) {
   var index = Math.floor(Math.random() * array.length)
 
@@ -83,45 +80,34 @@ function randomPassword(array) {
 
   return element
 }
-console.log(randomPassword(lowerCaseChar))
 
+//The generatePassword function will run generatePasswordQs to find the value for userChoices. Once the value has been fulfilled by the generatePasswordQs function the if statements will collect all the true values for each character type and concat thenm into the possibleCharacters array eliminating character types with a false value.
 function generatePassword() {
-  const passwordChoices = generatePasswordQs()
+  const userChoices = generatePasswordQs()
 
   var password = ""
-//this will generate more than 10 characters in the password !!! NEED TO FIGURE OUT HOW TO GET JUST 10
-  for(var i=0; i < passwordChoices.charNumber; i++){  
-    password += randomPassword(possibleCharacters)
 
-    var possibleCharacters = lowerCaseChar.concat(upperCaseChar, numericChar, specialCharEl)
+    var possibleCharacters = [].concat(lowerCaseChar, upperCaseChar, numericChar, specialCharEl);
 
-    if (passwordChoices.lowerCaseLetter) {
+    if (userChoices.lowerCaseLetter) {
       possibleCharacters = possibleCharacters.concat(lowerCaseChar)
     } 
-    if (passwordChoices.upperCaseLetter) {
+    if (userChoices.upperCaseLetter) {
       possibleCharacters = possibleCharacters.concat(upperCaseChar)
     }
-    if (passwordChoices.numericValue) {
+    if (userChoices.numericValue) {
       possibleCharacters = possibleCharacters.concat(numericChar)
     }
-    if (passwordChoices.special) {
+    if (userChoices.special) {
       possibleCharacters = possibleCharacters.concat(specialCharEl)
     }
-    console.log("password: " + password)
-//add for loops for rest of password choices
+//Once all desired characters have been collected in the possibleCharacters array, the for loop will run the randomPassword function for possibleCharacters by adding 1 random character each time it goes through the for loop until the character number (charNumber) that the user input has been met. 
+    for(var i=0; i < userChoices.charNumber; i++){  
+      password += randomPassword(possibleCharacters)
   }
+  //This will return the value for the password variable to the generatePassword function.
   return password 
-  //if states if they based on user's pick
 }
 
-// Add event listener to generate button
+// Event listener to generate button when run the function writePassword when it hears the user "click" the button.
 generateBtn.addEventListener("click", writePassword);
-
-
-//build useable character array. if password choices.lowercase letters are true then create new array possible characters.
-//declare new array w/ the users possible choices. include all the characters. concat array method. 
-//var possibleCharacters = [];
-// if (passwordChoices.lowerCaseLetter) {
-//   possibleCharacters = possibleCharacters.concat(lowerCaseLetterArr);
-// }
-//create for loop
