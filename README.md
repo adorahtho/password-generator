@@ -34,14 +34,20 @@ The following image shows how the already built password generator looks like.
 
 *Navigate to desired directory
 
-*Clone the repository:
+*Clone the repository from UW Coding Bootcamps Gitlab:
 git clone https://uwisconsin.bootcampcontent.com/uwisconsin_coding_bootcamp/UofW-VIRT-FSF-PT-02-2023-U-LOLC.git
 
 *Navigate to cloned repository
 
 
+<<<<<<< HEAD
 ## Deployed Website Link
 https://thoak90codes.github.io/challenge-3/ 
+=======
+## Deployed Application Link
+
+https://thoak90codes.github.io/challenge-3/
+>>>>>>> e5f3f6d53b05ca1cde1fd35a5d4142753732861c
 
 
 ## Author & Contributors
