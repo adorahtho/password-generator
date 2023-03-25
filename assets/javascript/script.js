@@ -15,19 +15,19 @@ function writePassword() {
   passwordText.value = password;
 }
 
-//This function will run the pop up windows asking the user their desired character length. If the answer is not between 8-128 characters, an alert will pop up for the user to enter again. Once the condition is met, additional windows will pop up asking if the user wants lowercase or uppercase letters, numbers, and/or special characters.
+//This function will run the pop up windows asking the user their desired character length. If the answer is not between 8-128 characters, an alert will pop up for the user to enter again. The user will have to click "Generate Password" button again to enter in a valid number. Once the condition is met, additional windows will pop up asking if the user wants lowercase or uppercase letters, numbers, and/or special characters.
 function generatePasswordQs () {
 
   var charLength = window.prompt("Please enter a digit between 8-128 to determine the desired length of password.")
 
   if (charLength >= 8 && charLength <= 128) {
     console.log("character length: " + charLength)
-    } else if (charLength < 8 || charLength > 128) { 
+    } else { 
       window.alert("Invalid entry. The characters must be between 8-128.")
-      console.log("invalid length")
-      generatePasswordQs();
+      console.log("invalid entry " + charLength)
+      return charLength
     }
-
+  
   var lowerCase = window.confirm("Click OK if you want lowercase letter(s) in your password.")
 
   if(lowerCase === true) {
