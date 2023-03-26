@@ -40,14 +40,11 @@ git clone https://uwisconsin.bootcampcontent.com/uwisconsin_coding_bootcamp/UofW
 *Navigate to cloned repository
 
 
-<<<<<<< HEAD
-## Deployed Website Link
-https://thoak90codes.github.io/challenge-3/ 
-=======
+
 ## Deployed Application Link
 
 https://thoak90codes.github.io/challenge-3/
->>>>>>> e5f3f6d53b05ca1cde1fd35a5d4142753732861c
+
 
 
 ## Author & Contributors
