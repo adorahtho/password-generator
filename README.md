@@ -1,4 +1,4 @@
-# challenge-3
+# password-generator
 
 ## A password generator that is used to meet certain criterias and provides greater security.
 
