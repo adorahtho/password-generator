@@ -81,26 +81,42 @@ function randomPassword(array) {
   return element
 }
 
-//The generatePassword function will run generatePasswordQs to find the value for userChoices. Once the value has been fulfilled by the generatePasswordQs function the if statements will collect all the true values for each character type and concat thenm into the possibleCharacters array eliminating character types with a false value.
+//The generatePassword function will run generatePasswordQs to find the value for userChoices. Once the value has been fulfilled by the generatePasswordQs function the if statements will collect all the true values for each character type and concat then into the possibleCharacters array. The false values for each type of character will not be included in possibleCharacters as the array for that variable has been cleared with the emtpy quotation marks.
 function generatePassword() {
   const userChoices = generatePasswordQs()
 
   var password = ""
 
-    var possibleCharacters = [].concat(lowerCaseChar, upperCaseChar, numericChar, specialCharEl);
+    var possibleCharacters = []
 
-    if (userChoices.lowerCaseLetter) {
+    if (userChoices.lowerCaseLetter === true) {
       possibleCharacters = possibleCharacters.concat(lowerCaseChar)
-    } 
-    if (userChoices.upperCaseLetter) {
+    } else {
+      lowerCaseChar = ""
+    }
+    console.log("current possible characters: " + possibleCharacters)
+
+    if (userChoices.upperCaseLetter === true) {
       possibleCharacters = possibleCharacters.concat(upperCaseChar)
+    }else {
+      upperCaseChar = ""
     }
-    if (userChoices.numericValue) {
+    console.log("current possible characters: " + possibleCharacters)
+
+    if (userChoices.numericValue === true) {
       possibleCharacters = possibleCharacters.concat(numericChar)
+    } else {
+      numericChar = ""
     }
-    if (userChoices.special) {
+    console.log("current possible characters: " + possibleCharacters)
+
+    if (userChoices.special === true) {
       possibleCharacters = possibleCharacters.concat(specialCharEl)
+    } else {
+      specialCharEl = ""
     }
+    console.log("current possible characters: " + possibleCharacters)
+    
 //Once all desired characters have been collected in the possibleCharacters array, the for loop will run the randomPassword function for possibleCharacters by adding 1 random character each time it goes through the for loop until the character number (charNumber) that the user input has been met. 
     for(var i=0; i < userChoices.charNumber; i++){  
       password += randomPassword(possibleCharacters)
