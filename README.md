@@ -43,7 +43,7 @@ git clone https://uwisconsin.bootcampcontent.com/uwisconsin_coding_bootcamp/UofW
 
 ## Deployed Application Link
 
-https://thoak90codes.github.io/challenge-3/
+https://thoak90codes.github.io/password-generator/
 
 
 
