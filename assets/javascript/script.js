@@ -23,7 +23,7 @@ function generatePasswordQs () {
   if (charLength >= 8 && charLength <= 128) {
     console.log("character length: " + charLength)
     } else { 
-      window.alert("Invalid entry. The characters must be between 8-128.")
+      window.alert("Invalid entry. The characters must be between 8-128. Please refresh and try again.")
       console.log("invalid entry " + charLength)
       return charLength
     }
@@ -92,7 +92,7 @@ function generatePassword() {
     if (userChoices.lowerCaseLetter === true) {
       possibleCharacters = possibleCharacters.concat(lowerCaseChar)
     } else {
-      lowerCaseChar = ""
+      lowerCaseChar = "none"
     }
     console.log("current possible characters: " + possibleCharacters)
 
